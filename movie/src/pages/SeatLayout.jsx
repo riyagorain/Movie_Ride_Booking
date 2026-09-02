@@ -95,10 +95,38 @@ useEffect(()=>{
 
         </div>
         </div>
-        <button onClick={()=> navigate('/my-bookings')} className='flex items-center gap-1 mt-20 px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer active:scale-95 '>Proceed to Checkout
+        {/* <button onClick={()=> navigate('/my-bookings')} className='flex items-center gap-1 mt-20 px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer active:scale-95 '>Proceed to Checkout
           <ArrowRightIcon strokeWidth={3} className="w-4 h-4"   />
-        </button>
+        </button> */}
+<button
+  onClick={() => {
+    if (!selectedTime) {
+      return toast("Please select a show time")
+    }
 
+    if (selectedSeats.length === 0) {
+      return toast("Please select at least one seat")
+    }
+
+    navigate('/ride-booking', {
+      state: {
+        movie: show.movie,
+        movieId: id,
+        date,
+        showTime: selectedTime.time,
+        seats: selectedSeats,
+        movieFare: selectedSeats.length * 150
+      }
+    })
+  }}
+  className="flex items-center gap-1 mt-20 px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer active:scale-95"
+>
+  Continue & Add Ride
+  <ArrowRightIcon
+    strokeWidth={3}
+    className="w-4 h-4"
+  />
+</button>
 
       </div>
       
