@@ -1,48 +1,3 @@
-// import { createRoot } from 'react-dom/client'
-// import './index.css'
-// import App from './App.jsx'
-// import { BrowserRouter } from 'react-router-dom'
-// import { ClerkProvider } from '@clerk/clerk-react'
-
-
-// const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-
-// if (!PUBLISHABLE_KEY) {
-//   throw new Error('Missing Publishable Key')
-// }
-
-
-// createRoot(document.getElementById('root')).render(
-//   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>
-//   </ClerkProvider>,
-// )
-
-
-// import { createRoot } from 'react-dom/client'
-// import './index.css'
-// import App from './App.jsx'
-// import { BrowserRouter } from 'react-router-dom'
-// import { ClerkProvider } from '@clerk/clerk-react'
-
-// const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-
-// if (!PUBLISHABLE_KEY) {
-//   throw new Error('Missing Publishable Key')
-// }
-
-// createRoot(document.getElementById('root')).render(
-//   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   </ClerkProvider>
-// )
-
-
-
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -57,9 +12,14 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-    <BrowserRouter>
+    {/* <BrowserRouter>
       <App />
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <BrowserRouter
+  basename={import.meta.env.PROD ? "/Movie_Ride_Booking" : "/"}
+>
+  <App />
+</BrowserRouter>
   </ClerkProvider>
 )
 
